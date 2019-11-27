@@ -1,5 +1,7 @@
 package io.azpect.logger.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import io.azpect.logger.feign.JSONPlaceHolderClient;
+import io.azpect.logger.feign.Post;
+
 @RestController
 public class Api {
 	
@@ -23,6 +28,9 @@ public class Api {
 	
 	@Autowired
 	private DTOTestLong DTOTestLong;
+	
+	@Autowired
+	private JSONPlaceHolderClient JSONPlaceHolderClient;
 
 	@GetMapping("greeting/{id}")
     public String greeting(@PathVariable String id) {
@@ -36,6 +44,8 @@ public class Api {
 		DTOTestLong.setType("Texto");
 		DTOTestLong.setMuNum(3123.321);
 		Response.setMessage(DTOTestLong);
+		
+		List<Post> p = JSONPlaceHolderClient.getPosts();
 		return new ResponseEntity<String>(Response.show(), HttpStatus.OK);
 	}
 	

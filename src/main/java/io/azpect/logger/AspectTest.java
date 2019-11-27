@@ -15,15 +15,21 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import feign.Client;
+import feign.Request;
+import feign.RequestTemplate;
+import feign.Response;
 import io.azpect.logger.facade.LoggerRestFacade;
 
+@Profile("!test")
 @Aspect
-@Component
+@Configuration
 public class AspectTest {
 	
 	Logger log = LoggerFactory.getLogger(this.getClass());
@@ -34,6 +40,18 @@ public class AspectTest {
 	@Autowired(required = false)
 	private HttpServletResponse HttpServletResponse;
 	
+	@Autowired(required = false)
+	private Client Client;
+	
+	@Autowired(required = false)
+	private Request Request;
+	
+	@Autowired(required = false)
+	private Response Response;
+	
+	@Autowired(required = false)
+	private RequestTemplate RequestTemplate;
+	
 	@Autowired
 	private LoggerRestFacade LoggerRestFacade;
 
@@ -43,20 +61,15 @@ public class AspectTest {
 	@Pointcut("within(@org.springframework.web.bind.annotation..* *)")
 	protected void springWebAnnotation() {}
 	
-//	@Pointcut("within(@org.springframework.stereotype..* *")
-//	protected void springWebAnnotation() {}
+//	@Pointcut("execution(* feign.*(..))")
+//	@Pointcut("execution(* org.springframework.cloud.netflix.feign.ribbon.LoadBalancerFeignClient.*(..))")
+//	protected void openfeignAnnotation() {}
 	
 	@Pointcut("execution(* *.*(..))")
 	protected void allMethods() {}
 
 	@Before("springWebAnnotation()")
-	public void teste(JoinPoint joinPoint) throws JsonProcessingException, IOException {
-
-//		log.info("Entering in Method :  " + joinPoint.getSignature().getName());
-//		log.info("Class Name :  " + joinPoint.getSignature().getDeclaringTypeName());
-//		log.info("Arguments :  " + Arrays.toString(joinPoint.getArgs()));
-//		log.info("Target class : " + joinPoint.getTarget().getClass().getName());
-		
+	public void beforeSpringWebAnnotation(JoinPoint joinPoint) throws JsonProcessingException, IOException {
 		if (HttpServletRequest != null) {
 			LoggerRestFacade.setRestRequest(HttpServletRequest, Arrays.toString(joinPoint.getArgs()));
 			log.info("Message : " + LoggerRestFacade.toJson());
@@ -64,13 +77,7 @@ public class AspectTest {
 	}
 	
 	@AfterReturning(pointcut = "springWebAnnotation()", returning = "result")
-	public void returnResult(JoinPoint joinPoint, ResponseEntity<String> result) throws IOException {
-		
-//		log.info("Entering in Method :  " + joinPoint.getSignature().getName());
-//		log.info("Class Name :  " + joinPoint.getSignature().getDeclaringTypeName());
-//		log.info("Arguments :  " + Arrays.toString(joinPoint.getArgs()));
-//		log.info("Target class : " + joinPoint.getTarget().getClass().getName());
-		
+	public void resultSpringWebAnnotation(JoinPoint joinPoint, ResponseEntity<String> result) throws IOException {
 		if (HttpServletResponse != null) {
 			LoggerRestFacade.setRestRequest(HttpServletRequest, Arrays.toString(joinPoint.getArgs()));
 			LoggerRestFacade.setRestResponse(HttpServletResponse, result);
@@ -78,40 +85,20 @@ public class AspectTest {
 		}
 	}
 	
+//	@Before("openfeignAnnotation()")
+//	public void resultOpenfeignAnnotation(JoinPoint joinPoint) throws IOException {
+//		
+//		log.info("Entering in Method :  " + joinPoint.getSignature().getName());
+//		log.info("Class Name :  " + joinPoint.getSignature().getDeclaringTypeName());
+//		log.info("Arguments :  " + Arrays.toString(joinPoint.getArgs()));
+//		log.info("Target class : " + joinPoint.getTarget().getClass().getName());
+//		
+//		
+//	}
+	
 	@AfterThrowing(pointcut = "springWebAnnotation() && allMethods()", throwing = "error")
 	public void throwError(JoinPoint joinPoint, Throwable error) {
 		log.error("Error " + error.getMessage() + Arrays.toString(error.getStackTrace()));
 	}
-
-//
-//	@Before("io.azpectMethods() && args(..,request)")
-//	public void logBeforeRequest(JoinPoint joinPoint, HttpEntityMethodProcessor request) {
-//		log.info("Entering in Method :  " + joinPoint.getSignature().getName());
-//		log.info("Class Name :  " + joinPoint.getSignature().getDeclaringTypeName());
-//		log.info("Arguments :  " + Arrays.toString(joinPoint.getArgs()));
-//		log.info("Target class : " + joinPoint.getTarget().getClass().getName());
-//		
-//	}
-//	
-//	@Before("io.azpectMethods() && args(..,response)")
-//	public void logBeforeRespose(JoinPoint joinPoint, HttpServletResponse response) {
-//		log.info("Entering in Method :  " + joinPoint.getSignature().getName());
-//		log.info("Class Name :  " + joinPoint.getSignature().getDeclaringTypeName());
-//		log.info("Arguments :  " + Arrays.toString(joinPoint.getArgs()));
-//		log.info("Target class : " + joinPoint.getTarget().getClass().getName());
-//		
-//		if (null != request) {
-//			log.debug("Start Header Section of request ");
-//			log.debug("Method Type : " + request.getMethod());
-//			Enumeration<String> headerNames = request.getHeaderNames();
-//			while (headerNames.hasMoreElements()) {
-//				String headerName = (String) headerNames.nextElement();
-//				String headerValue = request.getHeader(headerName);
-//				log.debug("Header Name: " + headerName + " Header Value : " + headerValue);
-//			}
-//			log.debug("Request Path info :" + request.getServletPath());
-//			log.debug("End Header Section of request ");
-//		}
-//	}
 	
 }

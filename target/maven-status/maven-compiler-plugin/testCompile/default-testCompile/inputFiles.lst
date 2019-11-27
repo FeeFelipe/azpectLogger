@@ -1,3 +1,3 @@
-/Users/felipecavalieri/Documents/projects/azpecLogger/src/test/java/my/logger/aspect/AspectTest.java
-/Users/felipecavalieri/Documents/projects/azpecLogger/src/test/java/my/logger/api/Api.java
-/Users/felipecavalieri/Documents/projects/azpecLogger/src/test/java/my/logger/LoggerTestApplicationTests.java
+/Users/felipecavalieri/Documents/projects/azpecLogger/src/test/java/io/azpect/logger/AzpectLoggerApplicationTests.java
+/Users/felipecavalieri/Documents/projects/azpecLogger/src/test/java/io/azpect/logger/aspect/AspectTest.java
+/Users/felipecavalieri/Documents/projects/azpecLogger/src/test/java/io/azpect/logger/api/ApiTest.java

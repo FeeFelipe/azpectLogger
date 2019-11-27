@@ -2,10 +2,12 @@
 /Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/rest/LoggerRestHeader.java
 /Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/dto/LoggerRestRequestDTO.java
 /Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/dto/LoggerRestResponseDTO.java
+/Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/feign/JSONPlaceHolderClient.java
 /Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/AzpectLoggerApplication.java
 /Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/api/Api.java
 /Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/AspectTest.java
 /Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/rest/LoggerRestBody.java
+/Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/feign/Post.java
 /Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/servlet/ServletFilter.java
 /Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/api/DTOTestString.java
 /Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/NoLogger.java

@@ -11,6 +11,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -63,14 +64,28 @@ public class LoggerRestHeader {
 		return ObjectMapper.readTree(headerJsonString);
 	}
 	
+	public void setRequestTrace(HttpServletRequest request) {
+		if (correlationId != null) {
+			if (request.getHeader(correlationId) != null)
+				MDC.put(correlationId, request.getHeader(correlationId));
+			else
+				MDC.put(correlationId, UUID.randomUUID().toString());
+		}
+		
+		if (traceId != null)  {
+			MDC.put(parentId, request.getHeader(traceId));
+			MDC.put(traceId, UUID.randomUUID().toString());
+		}
+	}
+	
 	public void setResponseTrace(HttpServletResponse response) {
 		if (correlationId != null)
-			response.setHeader(correlationId, UUID.randomUUID().toString());
+			response.setHeader(correlationId, MDC.get(correlationId));
 		
 		if (traceId != null)
-			response.addHeader(traceId, UUID.randomUUID().toString());
+			response.addHeader(traceId, MDC.get(traceId));
 		
 		if (parentId != null)
-			response.addHeader(parentId, UUID.randomUUID().toString());
+			response.addHeader(parentId, MDC.get(parentId));
 	}
 }

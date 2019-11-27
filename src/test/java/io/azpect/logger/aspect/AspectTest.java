@@ -1,5 +1,7 @@
 package io.azpect.logger.aspect;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -7,8 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class AspectTest {
 
 	@Test
-	public String error() {
-		
-		return "Error ";
+	public void error() {
+		boolean b = true;
+		assertTrue(b);
 	}
 }

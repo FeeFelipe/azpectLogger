@@ -39,6 +39,8 @@ public class LoggerRestFacade {
 	@Autowired
 	private ObjectMapper ObjectMapper;
 	public void setRestRequest(HttpServletRequest request, String body) throws JsonProcessingException, IOException {
+		LoggerRestHeader.setRequestTrace(request);
+		
 		LoggerRestDTO.setUrl(request.getRequestURL().toString());
 		LoggerRestDTO.setMethod(request.getMethod());
 
