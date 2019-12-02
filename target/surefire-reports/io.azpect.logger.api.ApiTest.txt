@@ -1,4 +1,19 @@
 -------------------------------------------------------------------------------
 Test set: io.azpect.logger.api.ApiTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s - in io.azpect.logger.api.ApiTest
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 31.457 s <<< FAILURE! - in io.azpect.logger.api.ApiTest
+error21  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration': Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 can't find referenced pointcut allMethods
+Caused by: java.lang.IllegalArgumentException: error at ::0 can't find referenced pointcut allMethods
+
+error1  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration': Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 can't find referenced pointcut allMethods
+Caused by: java.lang.IllegalArgumentException: error at ::0 can't find referenced pointcut allMethods
+
+error  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration': Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 can't find referenced pointcut allMethods
+Caused by: java.lang.IllegalArgumentException: error at ::0 can't find referenced pointcut allMethods
+

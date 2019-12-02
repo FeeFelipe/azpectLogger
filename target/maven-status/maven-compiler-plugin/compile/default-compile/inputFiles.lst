@@ -13,4 +13,6 @@
 /Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/NoLogger.java
 /Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/facade/LoggerRestFacade.java
 /Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/dto/LoggerRestDTO.java
+/Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/restTemplate/ClientRestTemplate.java
 /Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/api/Response.java
+/Users/felipecavalieri/Documents/projects/azpecLogger/src/main/java/io/azpect/logger/feign/RequestInterceptorF.java

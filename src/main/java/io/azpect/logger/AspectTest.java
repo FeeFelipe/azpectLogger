@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -61,12 +62,13 @@ public class AspectTest {
 	@Pointcut("within(@org.springframework.web.bind.annotation..* *)")
 	protected void springWebAnnotation() {}
 	
-//	@Pointcut("execution(* feign.*(..))")
+//	@Pointcut("within(@org.springframework.cloud.openfeign..* *)")
 //	@Pointcut("execution(* org.springframework.cloud.netflix.feign.ribbon.LoadBalancerFeignClient.*(..))")
 //	protected void openfeignAnnotation() {}
 	
-	@Pointcut("execution(* *.*(..))")
-	protected void allMethods() {}
+//	@Pointcut("execution(* *.*(..))")
+//	@Pointcut("execution(public * *(..))")
+//	protected void allMethods() {}
 
 	@Before("springWebAnnotation()")
 	public void beforeSpringWebAnnotation(JoinPoint joinPoint) throws JsonProcessingException, IOException {
@@ -85,8 +87,9 @@ public class AspectTest {
 		}
 	}
 	
-//	@Before("openfeignAnnotation()")
-//	public void resultOpenfeignAnnotation(JoinPoint joinPoint) throws IOException {
+//	@Before("allMethods() && args(..,request)")
+//	@Around("openfeignAnnotation()")
+//	public void resultOpenfeignAnnotation(JoinPoint joinPoint, HttpServletRequest request) throws IOException {
 //		
 //		log.info("Entering in Method :  " + joinPoint.getSignature().getName());
 //		log.info("Class Name :  " + joinPoint.getSignature().getDeclaringTypeName());

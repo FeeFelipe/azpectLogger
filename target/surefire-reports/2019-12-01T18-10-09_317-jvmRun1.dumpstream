@@ -1,0 +1,25 @@
+# Created at 2019-12-01T18:10:59.929
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: null
+java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+# Created at 2019-12-01T18:11:03.954
+Unexpected IOException with stream: 2019-12-01 18:11:03.953  INFO 7695 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$125e2956] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+
+
+# Created at 2019-12-01T18:11:09.223
+Unexpected IOException: 5,1,io.azpect.logger.aspect.AspectTest,error,null,null,null
+
+
+# Created at 2019-12-01T18:11:09.225
+Unexpected IOException: 7,1,io.azpect.logger.aspect.AspectTest,error,null,Failed to load ApplicationContext,null,Failed to load ApplicationContext,AspectTest.error \00BB IllegalState Failed to load ApplicationContext,java.lang.IllegalStateException: Failed to load ApplicationContext\000ACaused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration': Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 can't find referenced pointcut allMethods\000ACaused by: java.lang.IllegalArgumentException: error at ::0 can't find referenced pointcut allMethods\000A
+
+
+# Created at 2019-12-01T18:11:09.226
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,io.azpect.logger.aspect.AspectTest,null,null,null
+
+

@@ -1,0 +1,16 @@
+io/azpect/logger/NoLogger.class
+io/azpect/logger/rest/LoggerRestHeader.class
+io/azpect/logger/dto/LoggerRestDTO.class
+io/azpect/logger/feign/JSONPlaceHolderClient.class
+io/azpect/logger/feign/Post.class
+io/azpect/logger/api/DTOTestString.class
+io/azpect/logger/facade/LoggerRestFacade.class
+io/azpect/logger/restTemplate/ClientRestTemplate.class
+io/azpect/logger/rest/LoggerRestBody.class
+io/azpect/logger/feign/RequestInterceptorF.class
+io/azpect/logger/api/Response.class
+io/azpect/logger/AzpectLoggerApplication.class
+io/azpect/logger/api/Api.class
+io/azpect/logger/api/DTOTestLong.class
+io/azpect/logger/dto/LoggerRestRequestDTO.class
+io/azpect/logger/dto/LoggerRestResponseDTO.class
